@@ -1,0 +1,19 @@
+const express = require("express")
+
+const router = express.Router()
+
+const user = require('../model/Users').prototype
+
+router.get('/users', (req,res) => user.getUsers(res))
+
+router.post('/user', (req,res) => {
+    console.log(req.body)
+    user.postUser(req,res)})
+
+router.put('/user/:id', (req,res) => user.updateUser(req,res))
+router.put('/user/:id/password', (req,res) => user.updateUserPassword(req,res))
+
+router.delete('/user/:id', (req,res) => user.deleteUser(req,res))
+
+
+module.exports = router

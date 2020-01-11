@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="columns is-mobile is-centered">
       <div class="column is-6">
         <div class="box">
