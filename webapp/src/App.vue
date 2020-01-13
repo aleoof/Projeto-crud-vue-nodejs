@@ -5,7 +5,15 @@
 <script>
 export default {
   name: "app",
-  components: {}
+  components: {},
+  mounted() {
+
+        if (localStorage.getItem("userId") ) {
+          this.$router.push({ name: "home" });
+        } else {
+          this.$router.push({ name: "login" });
+        }
+  }
 };
 </script>
 

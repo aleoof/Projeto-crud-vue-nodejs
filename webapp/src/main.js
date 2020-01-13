@@ -13,6 +13,17 @@ var router = new VueRouter({
   routes: routes
 })
 
+router.beforeEach((to, from, next) => {
+
+if(!localStorage.getItem('userId') && to.name !== 'login'){
+  next({name: 'login'})
+}else{
+  next()
+}
+
+
+})
+
 new Vue({
   router: router,
   render: h => h(App),

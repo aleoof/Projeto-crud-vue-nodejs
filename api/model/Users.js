@@ -31,12 +31,18 @@ class Users {
         let name = req.body.name.substring(0,150)
         let cargo = req.body.cargo.substring(0,150)
         let password = req.body.password.substring(0,150)
-        SQL(`UPDATE users SET name='${name}', cargo='${cargo}', password=${password} WHERE id=${id}`,res)
+        let user = req.body.user.substring(0,150)
+        SQL(`UPDATE users SET name='${name}', cargo='${cargo}', password='${password}', user='${user}' WHERE id=${id}`,res)
     }
     
     deleteUser(req,res){
         let id = parseInt(req.params.id)
         SQL(`DELETE FROM users WHERE id=${id}`, res)
+    }
+
+    async login(req,res){
+        let username = req.body.user
+       SQL(`SELECT * FROM users WHERE user='${username}'`, res )
     }
 
 
