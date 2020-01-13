@@ -33,8 +33,6 @@ export default {
     props: ['id','name','cargo'],
     methods: {
       removeEmploy(){
-        /* eslint-disable no-console */
-        console.log(this.$props.id)
         axios.delete(`http://localhost:3333/user/${this.$props.id}`).then(()=>{
           this.updateList()
         })

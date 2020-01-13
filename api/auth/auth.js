@@ -13,7 +13,6 @@ module.exports = function(passport) {
     passporte.use(new PassaportStrategy(
         { usernameField: 'user', passwordField: 'password' },
         async function (username, password, done) {
-            console.log(passporte.Authenticator)
                 let user = await users.login(username, passporte.Authenticator)
 
                 if (!user) { return done(null, false, { message: 'Incorrect username.' }) }

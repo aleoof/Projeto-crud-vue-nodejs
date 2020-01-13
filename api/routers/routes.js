@@ -7,7 +7,6 @@ const user = require('../model/Users').prototype
 router.get('/users', (req, res) => user.getUsers(res))
 
 router.post('/user', (req, res) => {
-    console.log(req.body)
     user.postUser(req, res)
 })
 

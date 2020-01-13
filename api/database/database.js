@@ -2,7 +2,6 @@ const mysql = require('mysql');
 
 
 function execSqlQuery(sqlQuery, res){
-    console.log(sqlQuery)
     const conection = mysql.createConnection({
         host     : 'localhost',
         port     :  3306,
@@ -18,7 +17,6 @@ function execSqlQuery(sqlQuery, res){
             res.json(result)
         }
         conection.end();
-        console.log('executado')
     })
 
 }

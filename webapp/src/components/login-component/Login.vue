@@ -5,12 +5,12 @@
         <div class="box">
           <div class="field">
             <div class="control">
-              <input class="input" type="text" placeholder="Usuário" v-model="user"/>
+              <input class="input" type="text" placeholder="Usuário" v-model="user" />
             </div>
           </div>
           <div class="field">
             <div class="control">
-              <input class="input" type="password" placeholder="Senha" v-model="password"/>
+              <input class="input" type="password" placeholder="Senha" v-model="password" />
             </div>
           </div>
           <div class="level">
@@ -28,46 +28,46 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "Login",
-  data(){
+  data() {
     return {
-      user:'',
-      password:''
-    }
+      user: "",
+      password: ""
+    };
   },
-  methods:{
-    login(){
-      axios.post('http://localhost:3333/login',{user: this.user, password:this.password}).then(response => {
-        /* eslint-disable no-console */
-        console.log(response.data.map(res => res.id))
-        if(response.data.map(res => res.id).join('')){
-          localStorage.setItem('userId',response.data.map(res => res.id).join(''))
-          this.$router.push({name: 'home'})
-        }
-         
-        
+  methods: {
+    login() {
+      axios
+        .post("http://localhost:3333/login", {
+          user: this.user,
+          password: this.password
         })
-     
-      
+        .then(response => {
+          if (response.data.map(res => res.id).join("")) {
+            localStorage.setItem(
+              "userId",
+              response.data.map(res => res.id).join("")
+            );
+            this.$router.push({ name: "home" });
+          }
+        });
     }
   },
-    beforeRouteEnter(to, from, next){
-        /* eslint-disable no-console */
-      console.log('id dessa porra', localStorage.getItem('userId'))
-      next(vm => {
-        if(localStorage.getItem('userId')){
-          vm.$router.push({name:'home'})
-        }
-      })
-    }
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (localStorage.getItem("userId")) {
+        vm.$router.push({ name: "home" });
+      }
+    });
+  }
 };
 </script>
 
 <style>
-.container{
-    padding-top: 5em;
+.container {
+  padding-top: 5em;
 }
 </style>

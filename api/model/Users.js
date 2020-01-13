@@ -13,7 +13,6 @@ class Users {
     }
 
     postUser(req, res){
-        console.log(req.body)
         let name = req.body.name
         let cargo = req.body.cargo
         SQL(`INSERT INTO users(name, cargo) VALUES('${name}', '${cargo}')`, res)
