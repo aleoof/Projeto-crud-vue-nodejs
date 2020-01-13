@@ -12,4 +12,4 @@
 
 ## Logando na aplicação
 * login: **admin**
-* passwor: **admin**
+* password: **admin**
